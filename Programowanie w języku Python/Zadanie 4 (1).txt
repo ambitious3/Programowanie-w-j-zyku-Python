@@ -1,0 +1,17 @@
+#Zadanie 4
+def mile():
+    print("Enter value in miles: ")
+    a = int(input())
+    km = a * 1.6093
+    print(a, "miles is equal to: ", km, "kilometers" "\n")
+
+    print("OR" "\n")
+
+def km():
+    print("Write value in kilometers: ")
+    b = int(input())
+    mile = b * 0.6214
+    print(b, "kilometers is equal to: ", mile, "miles")
+
+mile()
+km()

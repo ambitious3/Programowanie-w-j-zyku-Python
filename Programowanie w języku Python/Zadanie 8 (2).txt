@@ -1,0 +1,54 @@
+from tkinter import *
+import csv
+
+def your_list():
+    file = open("adult.csv", "a")
+    name = name_box.get()
+    age = age_box.get()
+    newrecord = name + "  " + age + "\n"
+    file.write(str(newrecord))
+    file.close()
+    name_box.delete(0, END)
+    age_box.delete(0, END)
+    name_box.focus()
+
+def local_list():
+    name_list.delete(0, END)
+    file = list(csv.reader(open("adult.csv")))
+    tmp=[]
+    for row in file:
+        tmp.append(row)
+    i = 0
+    for x in tmp:
+        data = tmp[i]
+        name_list.insert(END, data)
+        i = i + 1
+root = Tk()
+root.geometry("500x350")
+
+label = Label(text="Enter your name: ")
+label.place(x=20, y =30, width=100, height=25)
+
+name_box = Entry(text="")
+name_box.place(x= 120, y=30, width=100, height=25)
+name_box.focus()
+
+label2 = Label(text="Enter your age: ")
+label2.place(x=20, y=70, width=100, height=25)
+
+age_box = Entry(text="")
+age_box.place(x=120, y=70, width=100, height=25)
+
+button = Button(text="Add to file", command = your_list)
+button.place(x=300, y=30, width=100, height=25)
+
+button2 = Button(text="Read", command = local_list)
+button2.place(x=300, y=70, width=100, height=25)
+
+label3 = Label(text="Saved Names: ")
+label3.place(x=20, y=100, width=100, height=25)
+
+name_list = Listbox()
+name_list.place(x=120, y=100, width=300, height=100)
+
+root.mainloop()

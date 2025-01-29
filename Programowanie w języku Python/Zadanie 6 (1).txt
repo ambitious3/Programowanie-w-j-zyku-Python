@@ -1,0 +1,49 @@
+from tkinter import *
+import csv
+
+def new_number():
+    num = entry_box.get()
+    if num.isdigit():
+        num_list.insert(END, num)
+        entry_box.delete(0, END)
+        entry_box.focus()
+    else:
+        entry_box.delete(0, END)
+        entry_box.focus()
+
+def clear():
+    num_list.delete(0, END)
+    entry_box.focus()
+
+def save():
+    file = open("List.csv", "w")
+    tmp_list=num_list.get(0, END)
+    inside = 0
+    for i in tmp_list:
+        newrecord = tmp_list[inside] + "\n"
+        file.write(str(newrecord))
+        inside = inside + 1
+    file.close()
+
+root = Tk()
+root.geometry("500x400")
+
+label = Label(text="Enter number: ")
+label.place(x=5, y=10, width=100, height=25)
+entry_box = Entry(text=0)
+entry_box.place(x=100, y=10, width=100, height=25)
+entry_box.focus()
+
+button = Button(text="Add number", command = new_number)
+button.place(x=280, y=10, width=100, height=25)
+
+num_list = Listbox()
+num_list.place(x=100, y=60, width=100, height=100)
+
+buttonn = Button(text="Clear list", command = clear)
+buttonn.place(x=280, y=70, width=100, height=25)
+
+button3 = Button(root, text="Save", command = save)
+button3.place(x=280, y=320, width=100, height=25)
+
+root.mainloop()

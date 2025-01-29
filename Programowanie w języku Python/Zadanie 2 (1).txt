@@ -1,0 +1,33 @@
+#Zadanie 2
+
+import csv
+
+def new_record():
+    file = open ("Salaries.csv", "a")
+    name = str(input("Enter name: "))
+    salary = int(input("Enter salary: "))
+    nrecord = name + ", " + str(salary) + "\n"
+    file.write(str(nrecord))
+    file.close()
+
+def view():
+    file = open("Salaries.csv", "r")
+    for row in file:
+        print(row)
+    file.close()
+
+tryagain = True
+while tryagain == True:
+    print("1. Add to file ")
+    print("2. View all records ")
+    print("3. Quit program " "\n")
+
+    menu = input("Enter the number of your selection: ")
+    if menu == "1":
+        new_record()
+    elif menu == "2":
+        view()
+    elif menu == "3":
+        tryagain = False
+    else:
+        print("Wrong option ")

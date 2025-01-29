@@ -1,0 +1,58 @@
+# ZALICZENIE PYTHON
+
+# Zadanie 1
+
+def new_name():
+    name = str(input("Enter new name: "))
+    names.append(name)
+    return names
+
+def change_name():
+    number = 0
+    for i in names:
+        print(number, i)
+        number = number + 1
+    which_one = int(input("Which one name do you want to change (pick number): "))
+    name = str(input("Enter a new name: "))
+    names[which_one] = name
+    return names
+
+def delete_name():
+    number = 0
+    for i in names:
+        print(number, i)
+        number = number + 1
+    which_one = int(input("Which one name do you want to delete (pick number): "))
+    del names[which_one]
+    return names
+
+def view_name():
+    for i in names:
+        print(i)
+    print()
+
+def main():
+    again = "yes"
+    while again == "yes":
+        print("1. Add name ")
+        print("2. Change name ")
+        print("3. Delete name ")
+        print("4. View name ")
+        print("5. End program ")
+        menu = int(input("Choose which action you want to do:  "))
+        if menu == 1:
+            names = new_name()
+        elif menu == 2:
+            names = change_name()
+        elif menu == 3:
+            names = delete_name()
+        elif menu == 4:
+            names = view_name()
+        elif menu == 5:
+            again = "no"
+        else:
+            print("Wrong option ")
+        remember = (names, again)
+
+names =[]
+main()
